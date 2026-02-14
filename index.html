@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💚</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#0f3d2e,#2ecc71);
+    color:#eafff3;
+    min-height:100vh;
+    overflow-x:hidden;
+    text-align:center;
+}
+
+/* PAGE SYSTEM */
+.page{
+    display:none;
+    padding:60px 16px;
+    max-width:1100px;
+    margin:auto;
+}
+.active{display:block}
+
+/* TEXT */
+h1{
+    font-size:clamp(26px,5vw,40px);
+    margin-bottom:12px;
+}
+p{
+    font-size:clamp(15px,3.8vw,18px);
+    line-height:1.6;
+    opacity:.92;
+}
+
+/* INPUT */
+input{
+    padding:14px;
+    border-radius:30px;
+    border:none;
+    width:100%;
+    max-width:260px;
+    text-align:center;
+    font-size:16px;
+    outline:none;
+    margin-top:20px;
+}
+
+/* BUTTON */
+button{
+    margin:16px 10px;
+    padding:14px 36px;
+    border-radius:30px;
+    border:none;
+    background:#eafff3;
+    color:#0f3d2e;
+    font-weight:600;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+button:hover{
+    background:#0f3d2e;
+    color:white;
+}
+
+/* CENTER GLOW */
+.glow{
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:min(420px,80vw);
+    height:min(420px,80vw);
+    background:radial-gradient(circle,rgba(255,255,255,.18),transparent);
+    transform:translate(-50%,-50%);
+    animation:pulse 4s infinite;
+    z-index:-1;
+}
+@keyframes pulse{
+    0%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-50%,-50%) scale(1.2)}
+    100%{transform:translate(-50%,-50%) scale(1)}
+}
+
+/* FLOATING HEARTS */
+.heart{
+    position:fixed;
+    bottom:-40px;
+    animation:floatUp linear infinite;
+    pointer-events:none;
+    filter:drop-shadow(0 0 10px rgba(46,204,113,.85));
+}
+@keyframes floatUp{
+    0%{transform:translateY(0) scale(.6);opacity:0}
+    20%{opacity:1}
+    100%{transform:translateY(-120vh) scale(1.2);opacity:0}
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+    margin-top:32px;
+    padding:0 10px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,.12);
+    border-radius:22px;
+    padding:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card img,
+.card video{
+    width:100%;
+    border-radius:16px;
+}
+
+.caption{
+    margin-top:10px;
+    font-size:14px;
+    opacity:.9;
+}
+
+/* RESPONSIVE */
+@media(min-width:768px){
+    .page{padding:80px 30px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- MUSIC (PLAYS ONLY ONCE) -->
+<audio id="music">
+    <source src="music.mp3.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>To My Love 💚</h1>
+    <p>Enter the secret code to unlock my heart</p>
+    <input id="secretInput" placeholder="Secret Name">
+    <br>
+    <button onclick="checkSecret()">Enter 💕</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>Hey My Love 😌💚</h1>
+    <p>
+        From 10-08-2025, my heart decided its forever.  
+        And that forever… is you.
+    </p>
+    <button onclick="openPage(3)">Our Photos 📸</button>
+    <button onclick="openPage(4)">Our Videos 🎥</button>
+    <button onclick="openPage(5)">My love 💖</button>
+    
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>Our Memories 💞</h1>
+    <p>Every picture has a heartbeat!!Also the AI created pic💖</p>
+
+    <div class="gallery">
+        <div class="card">
+            <img src="photo1.jpeg">
+            <div class="caption"></div>
+        </div>
+        <div class="card">
+            <img src="photo2.jpeg">
+            <div class="caption">
+            </div>
+        </div>
+    </div>
+
+    <button onclick="openPage(2)">⬅ Back</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>Our Moments ❤️</h1>
+    <p>Moments that live forever in my heart</p>
+
+    <div class="gallery">
+        <div class="card">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+            <div class="caption">
+                I don’t watch this… I *feel* this 💗
+            </div>
+        </div>
+    </div>
+
+    <button onclick="openPage(2)">⬅ Back</button>
+</div>
+
+<!-- Page 5 -->
+ <div id="page5" class="page">
+    <div class="big-heart">💚</div>
+    <h1>About the Journey With You</h1>
+    <p>
+        So, Nejama enaku ena solrathunu therila...<br>
+         Enaku neeenaa romba pudikum😘,from first year ❣️sathiyama poi la solala daa😂..Seri vidu..<br>
+         Inaiku Valentine Day...Happy Valentine's Day da😘💕..I love you so much ga😘💕..<br>
+         Unkooda intha marii lifelong till my end irukanum asa padurenn😁😚☺️..Cringe ah irukula paravala irukatum vidu..
+         Unkooda irunthah ovoru moment na nejama avalo santhosama irunthen..<br>
+         First thanks da elathukum..aprm romba sorry elathukum..na una romba hurt panirken...Nejama romba sorry Balaji. Kandipa na ena mathipen enakaga ilanalum unakaga..<br>
+         Kadaisiya, na nalla samaika kathukuren ,, velaiku poi una nalla pathukuren, nee ena Kalyanam panikuriyaa??? Will You❓
+    </p>
+    <button onclick="openPage(2)">⬅ Back</button>
+</div>
+
+<script>
+let musicPlayed=false;
+let heartsStarted=false;
+
+function checkSecret(){
+    const val=document.getElementById("secretInput").value.trim();
+    if(val==="KaranHarrshu"){
+        if(!musicPlayed){
+            document.getElementById("music").play();
+            musicPlayed=true;
+        }
+        openPage(2);
+        if(!heartsStarted){
+            startHearts();
+            heartsStarted=true;
+        }
+    }else{
+        alert("Wrong secret 😏 Only my love knows it");
+    }
+}
+
+function openPage(n){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById("page"+n).classList.add('active');
+}
+
+function startHearts(){
+    setInterval(()=>{
+        const h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="💚";
+        h.style.left=Math.random()*100+"vw";
+        h.style.fontSize=(18+Math.random()*30)+"px";
+        h.style.animationDuration=(6+Math.random()*4)+"s";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),10000);
+    },600);
+}
+</script>
+
+</body>
+</html>
+
